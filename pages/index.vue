@@ -99,17 +99,11 @@
   background: #ffffff;
   font-size: 1.2rem;
 }
-#__nuxt, #__layout {
-  height: 100% !important;
-  flex-direction: column !important;
-  display: flex !important;
-}
 </style>
 <script>
 import axios from 'axios'
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
-import config from '../nuxt.config'
 export default {
   name: 'index',
   data() {
