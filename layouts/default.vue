@@ -5,8 +5,12 @@
         <b-navbar-brand :to="'/'">
           <img src="~/assets/logo.png" alt="A project of Code for IATI"
             width="100px" />
-          {{ this.$config.title }}
+          Gov Org ID Finder
         </b-navbar-brand>
+        <b-navbar-nav class="mr-auto">
+          <b-nav-item :to="{name: 'index'}" exact-active-class="active">Home</b-nav-item>
+          <b-nav-item :to="{name: 'about'}" exact-active-class="active">About</b-nav-item>
+        </b-navbar-nav>
         <b-navbar-toggle
           target="none"
           data-c4i-toggle="sidebar"
@@ -27,7 +31,7 @@
       <b-container>
         <b-row>
           <b-col md="6">
-            <p>Using codes extracted from government budgets, <a href="https://iaticonnect.org/group/7/discussion/new-methodology-identifying-government-entities">as described here</a><span id="last-updated"></span>.</p>
+            <p>Using codes extracted from government budgets, <nuxt-link :to="{name: 'about'}">as described here</nuxt-link><span id="last-updated"></span>.</p>
 
             <p><a href="/downloads/org-ids.csv">Download a CSV snapshot</a>, or <a href="/downloads/org-ids.json">a JSON snapshot</a>.</p>
           </b-col>
@@ -76,6 +80,9 @@ export default {
     }
   },
   computed: {
+    title() {
+      return config.head.title
+    }
   },
   methods: {
   }
