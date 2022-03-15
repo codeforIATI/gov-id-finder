@@ -16,7 +16,7 @@
             ref="search_organisation_id">
 
             <template #option="{ code, label }">
-              <span style="display: flex;">
+              <span class="organisation-option">
                 <span class="organisation-option-label">{{ label }}</span>
                 <span class="organisation-option-code">{{ code }}</span>
               </span>
@@ -75,6 +75,9 @@
   margin: 0 auto;
   --vs-font-size: 1.2rem;
   --vs-search-input-placeholder-color: grey;
+}
+.organisation-data .organisation-option {
+  display: flex;
 }
 .organisation-data .organisation-option-label {
   flex-basis: 100%;
@@ -153,9 +156,12 @@ export default {
     },
     fetchOptions (search, loading) {
       const lookup = search.substr(0, 3).toLowerCase()
+      // If search text is not '', and the first three
+      // characters are different from what was previously entered...
       if ((lookup != '') && (lookup !== this.lookup)) {
         this.options = []
         this.lookup = lookup
+        // If there are three characters, lookup data.
         if (lookup.length === 3) {
           loading(true)
           this.selectedOrganisationID = null
@@ -175,13 +181,12 @@ export default {
       this.busy = true
       axios.get(`${this.baseURL}/data/${organisationID}.json`
         ).then(organisation => {
-
         this.selectedOrganisation = organisation.data
         this.selectedOrganisationID.label = Object.values(this.selectedOrganisation.name).join()
         this.$router.push({name: 'index', hash: `#${organisationID}`})
-        this.busy = false
       }).catch(error => {
         this.selectedOrganisationID = null
+      }).then(_ => {
         this.busy = false
       })
     }
