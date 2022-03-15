@@ -48,9 +48,19 @@ export default {
     // https://go.nuxtjs.dev/bootstrap
     'bootstrap-vue/nuxt',
     '@nuxtjs/axios',
+    '@nuxtjs/markdownit',
   ],
   axios: {
-    baseURL: 'https://gov-id-finder.codeforiati.org'
+    baseURL: 'https://codeforiati.org/gov-id-finder-data'
+  },
+  markdownit: {
+    preset: 'default',
+    linkify: true,
+    use: [
+    [
+      'markdown-it-anchor', { permalink: true, permalinkBefore: true }
+    ]
+    ]
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
