@@ -1,4 +1,36 @@
-# gov-id-finder
+# Government Organisation ID Finder
+
+Search government entity names (e.g. Ministries) to find their respective organisation identifiers (and vice versa), using data published in government budgets.
+
+This repository contains the front end; the data can be found in the following repository:
+https://github.com/codeforIATI/gov-id-finder-data
+
+## What’s this for?
+
+For traceability [[1]](#footnote-1), it’s crucial to know that ‘organisation one’ is the same as ‘organizzazione uno’. IATI solves this problem with [organisation identifiers](http://iatistandard.org/202/organisation-identifiers/) – standard, canonical references for organisations.
+
+However, there’s no single database for these references (there’s just a [list of lists](http://org-id.guide)), so:
+
+ * It’s difficult for IATI publishers to know the correct reference to use when entering IATI data. For instance:
+
+    > how should I refer to my implementing partner in activity x?
+
+ * It’s difficult to do a reverse lookup i.e. get from an organisation identifier to an organisation name. For instance, [the example provided here](https://discuss.codeforiati.org/t/data-use-observation-a-reference-for-an-organisation-alone-is-not-enough/1091) is:
+
+    > which organisation does `NL-KVK-41198677` refer to?
+
+## Why take this approach?
+
+This works as described by [on IATI Connect](https://iaticonnect.org/group/7/discussion/new-methodology-identifying-government-entities). This approach means that:
+
+ 1. It’s relatively simple to understand
+ 2. It’s easy to automate
+ 3. It focuses on codes used by governments in their own budgets, or Charts of Accounts
+
+----
+
+<a name="footnote-1">[1]</a>: Perhaps ‘traceability’ is a bit grandiose here. There’s lots of useful stuff we can do if we know lots of disparate data all refers to the same organisation. For instance, we could list all the activities that a given (non-publishing) organisation is implementing.
+
 
 ## Build Setup
 
@@ -18,52 +50,3 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
-
-## Special Directories
-
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
-
-### `assets`
-
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
-
-### `components`
-
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
-
-### `layouts`
-
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
-
-### `pages`
-
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
-
-### `plugins`
-
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
-
-### `static`
-
-This directory contains your static files. Each file inside this directory is mapped to `/`.
-
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
