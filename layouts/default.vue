@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex-column h-100">
-    <b-navbar toggleable="lg" type="light" variant="light" sticky>
+    <b-navbar toggleable="sm" type="light" variant="light" sticky>
       <b-container>
         <b-navbar-brand :to="'/'">
           <img src="~/assets/logo.png" alt="A project of Code for IATI"
@@ -14,7 +14,7 @@
           aria-controls="c4i-sidebar"
           aria-expanded="false"
           aria-label="Toggle Code for IATI sidebar"
-          class="navbar-toggler">
+          class="c4i-navbar-toggler navbar-toggler">
           <span class="navbar-toggler-icon"></span>
         </b-navbar-toggle>
       </b-container>
@@ -47,9 +47,17 @@
   </div>
 </template>
 <style>
-.navbar .navbar-toggler {
+.navbar .c4i-navbar-toggler {
   margin-left: 10px;
   display: inherit;
+}
+.navbar .active {
+  font-weight: bold;
+}
+#__nuxt, #__layout {
+  height: 100% !important;
+  flex-direction: column !important;
+  display: flex !important;
 }
 </style>
 <script>
