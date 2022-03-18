@@ -9,6 +9,7 @@
           <b-col class="text-left lead mb-2">
             <ul>
               <li>Source year: {{ this.country.Year }}</li>
+              <li>Source URL: <code><a href="this.country.Source">{{ this.country.Source }}</a></code></li>
               <li>Download data: <b-btn
                 variant="primary"
                 :href="`${baseURL}/source/${this.country_code}.csv`"
