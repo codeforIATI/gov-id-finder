@@ -9,6 +9,16 @@
         </b-navbar-brand>
         <b-navbar-nav class="mr-auto">
           <b-nav-item :to="{name: 'index'}" exact-active-class="active">Home</b-nav-item>
+          <b-nav-item-dropdown text="Countries" right>
+            <div class="scrollable-menu">
+              <b-dropdown-item
+                href="#" active :to="{name: 'about'}">Not listed? Get in touch!</b-dropdown-item>
+              <b-dropdown-item
+                v-for="country in countries"
+                v-key="country.Country_code"
+                :to="{name: 'countries-id', params: { id: country.Country_code }}">{{ country.Country_name }}</b-dropdown-item>
+            </div>
+          </b-nav-item-dropdown>
           <b-nav-item :to="{name: 'about'}" exact-active-class="active">About</b-nav-item>
         </b-navbar-nav>
         <b-navbar-toggle
@@ -63,9 +73,25 @@
   flex-direction: column !important;
   display: flex !important;
 }
+@media (min-width: 768px) {
+  .scrollable-menu {
+      height: auto;
+      max-height: calc(100vh - 80px);
+      overflow-x: hidden;
+  }
+}
+
+@media (max-width: 767px) {
+  .scrollable-menu {
+    height: auto;
+    max-height: calc(100vh - 260px);
+    overflow-x: hidden;
+  }
+}
 </style>
 <script>
 import config from '../nuxt.config'
+import { mapState } from 'vuex'
 
 export default {
   head() {
@@ -82,7 +108,7 @@ export default {
   computed: {
     title() {
       return config.head.title
-    }
+    },...mapState(['countries'])
   },
   methods: {
   }
