@@ -4,6 +4,7 @@
       <h1 class="display-5 text-center">
         Government Organisation ID Finder
       </h1>
+      <p class="lead text-center">Easily access codes for government entities in {{ numCountries }} countries.</p>
       <b-row>
         <b-col class="organisation-data text-center">
           <v-select
@@ -101,6 +102,7 @@
 }
 </style>
 <script>
+import { mapState } from 'vuex'
 import axios from 'axios'
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
@@ -130,7 +132,10 @@ export default {
   computed: {
     baseURL() {
       return this.$axios.defaults.baseURL
-    }
+    },
+    numCountries() {
+      return this.countries.length
+    },...mapState(['countries'])
   },
   components: {
     vSelect
