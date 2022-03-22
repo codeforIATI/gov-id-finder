@@ -109,6 +109,9 @@ export default {
     }
   },
   computed: {
+    baseURL() {
+      return this.$axios.defaults.baseURL
+    },
     title() {
       return config.head.title
     },...mapState(['countries'])
@@ -116,7 +119,7 @@ export default {
   methods: {
     async setupMetadata() {
       await axios
-        .get(`source/metadata.csv`).then(
+        .get(`${this.baseURL}/source/metadata.csv`).then(
           metadata => {
           this.$store.commit('setMetadata', metadata)
         })
