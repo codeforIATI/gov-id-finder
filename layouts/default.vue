@@ -114,15 +114,20 @@ export default {
     },...mapState(['countries'])
   },
   methods: {
-    setupMetadata() {
-      axios
-        .get(`source/metadata.csv`).then(metadata => {
-           this.$store.commit('setMetadata', metadata)
+    async setupMetadata() {
+      await axios
+        .get(`source/metadata.csv`).then(
+          metadata => {
+          this.$store.commit('setMetadata', metadata)
+        })
+      await axios
+        .get(`https://codelists.codeforiati.org/api/json/en/Country.json`).then(allCountries => {
+          this.$store.commit('setAllCountries', allCountries)
         })
     }
   },
   mounted() {
-
+    this.setupMetadata()
   }
 }
 </script>
