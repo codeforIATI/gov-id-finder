@@ -20,7 +20,7 @@
                 <li>Source URL: <code><a :href="this.country.source">{{ this.country.source }}</a></code></li>
                 <li>Download data: <b-btn
                   variant="primary"
-                  :href="`${baseURL}/source/${this.country_code}.csv`"
+                  :href="`${baseURL}/source/${this.countryCode}.csv`"
                   size="sm">CSV</b-btn></li>
               </ul>
             </b-col>
@@ -66,7 +66,7 @@ export default {
   data() {
     return {
       busy: false,
-      country_code: this.$route.params.id,
+      countryCode: this.$route.params.id,
       identifierFields: [
         {key: 'code', label: 'Organisation Identifier', tdClass: 'w-25'},
         {key: 'name', label: 'Name', tdClass: 'w-75'}
@@ -81,13 +81,13 @@ export default {
   },
   computed: {
     codesAvailable() {
-      return this.country_code in this.countriesObj
+      return this.countryCode in this.countriesObj
     },
     country() {
       if (this.codesAvailable) {
-        return this.countriesObj[this.country_code]
+        return this.countriesObj[this.countryCode]
       } else {
-        return {name: this.allCountriesObj[this.country_code]}
+        return {name: this.allCountriesObj[this.countryCode]}
       }
     },
     baseURL() {
@@ -97,12 +97,12 @@ export default {
   methods: {
     loadIdentifiers() {
       this.busy = true
-      axios.get(`${this.baseURL}/source/${this.country_code}.csv`
+      axios.get(`${this.baseURL}/source/${this.countryCode}.csv`
         ).then(response => {
         this.identifiers = csv(response.data).map(item => {
           const values = Object.values(item)
           return {
-            code: `${this.country_code}-COA-${values[0]}`,
+            code: `${this.countryCode}-COA-${values[0]}`,
             name: values[1]
           }
         })
@@ -117,6 +117,13 @@ export default {
     codesAvailable: {
       handler(value) {
         if (value === true) {
+          this.loadIdentifiers()
+        }
+      }
+    },
+    countryCode: {
+      handler() {
+        if (this.codesAvailable == true) {
           this.loadIdentifiers()
         }
       }
