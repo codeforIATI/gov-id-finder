@@ -1,36 +1,54 @@
 <template>
   <div>
-    <b-row>
-      <b-col>
-        <h1 class="display-5 text-center mt-5">
-          Government Organisation IDs for {{ this.country.Country_name }}
-        </h1>
-        <b-row>
-          <b-col class="text-left lead mb-2">
-            <ul>
-              <li>Source year: {{ this.country.Year }}</li>
-              <li>Source URL: <code><a href="this.country.Source">{{ this.country.Source }}</a></code></li>
-              <li>Download data: <b-btn
-                variant="primary"
-                :href="`${baseURL}/source/${this.country_code}.csv`"
-                size="sm">CSV</b-btn></li>
-            </ul>
-
-          </b-col>
-        </b-row>
-        <b-table
-          :fields="identifierFields"
-          :items="identifiers"
-          :busy="busy">
-          <template v-slot:table-busy>
-            <div class="text-center my-2">
-              <b-spinner class="align-middle" label="Loading..."></b-spinner>
-              <strong>Loading...</strong>
-            </div>
-          </template>
-        </b-table>
-      </b-col>
-    </b-row>
+    <template v-if="busy">
+      <b-row>
+        <b-col class="text-center">
+          <b-spinner variant="secondary" label="Loading..."></b-spinner>
+        </b-col>
+      </b-row>
+    </template>
+    <template v-else>
+      <b-row v-if="codesAvailable">
+        <b-col>
+          <h1 class="display-5 text-center">
+            Government Organisation IDs for {{ this.country.name }}
+          </h1>
+          <b-row>
+            <b-col class="text-left lead mb-2">
+              <ul>
+                <li>Source year: {{ this.country.year }}</li>
+                <li>Source URL: <code><a :href="this.country.source">{{ this.country.source }}</a></code></li>
+                <li>Download data: <b-btn
+                  variant="primary"
+                  :href="`${baseURL}/source/${this.country_code}.csv`"
+                  size="sm">CSV</b-btn></li>
+              </ul>
+            </b-col>
+          </b-row>
+          <b-table
+            :fields="identifierFields"
+            :items="identifiers"
+            :busy="busy">
+            <template v-slot:table-busy>
+              <div class="text-center my-2">
+                <b-spinner class="align-middle" label="Loading..."></b-spinner>
+                <strong>Loading...</strong>
+              </div>
+            </template>
+          </b-table>
+        </b-col>
+      </b-row>
+      <b-row v-else>
+        <b-col>
+          <h1 class="display-5 text-center">
+            Government Organisation IDs for {{ this.country.name }}
+          </h1>
+          <b-alert show variant="info">
+            <p class="lead text-center">We haven't yet extracted codes for this country. <nuxt-link :to="{name: 'about'}">Read more about the methodology here</nuxt-link>, and get in touch if you're able to share codes for {{ this.country.name }}.</p>
+          </b-alert>
+        </b-col>
+      </b-row>
+    </template>
   </div>
 </template>
 <style>
@@ -53,26 +71,20 @@ export default {
         {key: 'code', label: 'Organisation Identifier', tdClass: 'w-25'},
         {key: 'name', label: 'Name', tdClass: 'w-75'}
       ],
-      identifiers: []
+      identifiers: [],
+      codesAvailable: true,
+      country: {}
     }
   },
   head() {
     return {
-      title: `${this.country.Country_name} | Government Organisation ID Finder`
+      title: this.country ? `${this.country.name} | Government Organisation ID Finder` : `Government Organisation ID Finder`
     }
   },
   computed: {
     baseURL() {
       return this.$axios.defaults.baseURL
-    },
-    country() {
-      if (this.countries.length == 0) { return {} }
-      return this.countries.filter(
-        country => {
-          return country.Country_code == this.country_code
-        }
-      )[0]
-    },...mapState(['countries'])
+    },...mapState(['countries', 'countriesObj', 'allCountriesObj'])
   },
   methods: {
     loadIdentifiers() {
@@ -89,10 +101,20 @@ export default {
       }).finally(_ => {
         this.busy = false
       })
+    },
+    initialise() {
+      if (this.country_code in this.countriesObj) {
+        this.codesAvailable = true
+        this.country = this.countriesObj[this.country_code]
+        this.loadIdentifiers()
+      } else {
+        this.codesAvailable = false
+        this.country = {name: this.allCountriesObj[this.country_code]}
+      }
     }
   },
   mounted() {
-    this.loadIdentifiers()
+    this.initialise()
   },
   watch: {
   }

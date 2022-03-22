@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-jumbotron class="mt-4" bg-variant="white">
+    <b-jumbotron bg-variant="white">
       <h1 class="display-5 text-center">
         Government Organisation ID Finder
       </h1>

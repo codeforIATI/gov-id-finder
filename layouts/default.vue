@@ -15,8 +15,7 @@
                 href="#" active :to="{name: 'about'}">Not listed? Get in touch!</b-dropdown-item>
               <b-dropdown-item
                 v-for="country in countries"
-                v-key="country.Country_code"
-                :to="{name: 'countries-id', params: { id: country.Country_code }}">{{ country.Country_name }}</b-dropdown-item>
+                :to="{name: 'countries-id', params: { id: country.code }}">{{ country.name }}</b-dropdown-item>
             </div>
           </b-nav-item-dropdown>
           <b-nav-item :to="{name: 'about'}" exact-active-class="active">About</b-nav-item>
@@ -34,7 +33,7 @@
       </b-container>
     </b-navbar>
     <b-container class="d-flex flex-column h-100">
-      <nuxt class="d-flex flex-column h-100" />
+      <nuxt class="d-flex flex-column h-100 mt-5" />
     </b-container>
     <footer class="footer mt-auto">
       <hr />
@@ -47,7 +46,9 @@
           </b-col>
           <b-col md="6" class="text-md-right">
             <p>
-              A <a href="https://codeforiati.org">Code for IATI</a> project, supported by <a href="https://devinit.org">Develoment Initiatives</a> /
+              A <a href="https://codeforiati.org">Code for IATI</a> project, supported by <a href="https://devinit.org">Develoment Initiatives</a>
+            </p>
+            <p>
               <a href="https://github.com/codeforIATI/gov-id-finder">Source code</a> /
               <a href="https://github.com/codeforIATI/gov-id-finder/issues/new/choose">Report a bug</a>
             </p>
@@ -90,6 +91,8 @@
 }
 </style>
 <script>
+
+import axios from 'axios'
 import config from '../nuxt.config'
 import { mapState } from 'vuex'
 
@@ -111,6 +114,15 @@ export default {
     },...mapState(['countries'])
   },
   methods: {
+    setupMetadata() {
+      axios
+        .get(`source/metadata.csv`).then(metadata => {
+           this.$store.commit('setMetadata', metadata)
+        })
+    }
+  },
+  mounted() {
+
   }
 }
 </script>
