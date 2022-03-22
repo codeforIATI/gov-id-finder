@@ -20,7 +20,7 @@ export const mutations = {
     state.countriesObj = state.countries.reduce((summary, item) => {
       summary[item.code] = item
       return summary
-    })
+    }, {})
   },
   async setAllCountries(state, data) {
     state.allCountries = data

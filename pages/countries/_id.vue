@@ -66,7 +66,6 @@ export default {
   data() {
     return {
       busy: false,
-      countryCode: this.$route.params.id,
       identifierFields: [
         {key: 'code', label: 'Organisation Identifier', tdClass: 'w-25'},
         {key: 'name', label: 'Name', tdClass: 'w-75'}
@@ -80,6 +79,9 @@ export default {
     }
   },
   computed: {
+    countryCode() {
+      return this.$route.params.id
+    },
     codesAvailable() {
       return this.countryCode in this.countriesObj
     },
@@ -122,7 +124,8 @@ export default {
       }
     },
     countryCode: {
-      handler() {
+      immediate: true,
+      handler(value) {
         if (this.codesAvailable == true) {
           this.loadIdentifiers()
         }
