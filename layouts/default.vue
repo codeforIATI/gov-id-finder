@@ -121,11 +121,11 @@ export default {
       await axios
         .get(`${this.baseURL}/source/metadata.csv`).then(
           response => {
-          this.$store.commit('setMetadata', response.metadata)
+          this.$store.commit('setMetadata', response.data)
         })
       await axios
         .get(`https://codelists.codeforiati.org/api/json/en/Country.json`).then(response => {
-          this.$store.commit('setAllCountries', response.allCountries)
+          this.$store.commit('setAllCountries', response.data.data)
         })
     }
   },

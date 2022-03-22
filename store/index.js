@@ -23,7 +23,7 @@ export const mutations = {
     })
   },
   async setAllCountries(state, data) {
-    state.allCountries = data.data
+    state.allCountries = data
     state.allCountriesObj = state.allCountries.reduce((summary, item) => {
       summary[item.code] = item.name
       return summary
@@ -35,7 +35,7 @@ export const actions = {
   async nuxtServerInit ({ commit }, { $axios }) {
     const allCountries = await $axios
       .$get(`https://codelists.codeforiati.org/api/json/en/Country.json`)
-    commit('setAllCountries', allCountries)
+    commit('setAllCountries', allCountries.data)
     const metadata = await $axios
       .$get(`source/metadata.csv`)
     commit('setMetadata', metadata)
