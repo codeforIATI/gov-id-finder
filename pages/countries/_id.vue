@@ -44,7 +44,7 @@
             Government Organisation IDs for {{ this.country.name }}
           </h1>
           <b-alert show variant="info">
-            <p class="lead text-center">We haven't yet extracted codes for this country. <nuxt-link :to="{name: 'about'}">Read more about the methodology here</nuxt-link>, and get in touch if you're able to share codes for {{ this.country.name }}.</p>
+            <p class="lead text-center">We haven't yet extracted codes for this country. <nuxt-link :to="{name: 'about'}">Read more about the methodology here</nuxt-link>, and please get in touch if you're able to share codes for {{ this.country.name }}.</p>
           </b-alert>
         </b-col>
       </b-row>
@@ -71,9 +71,7 @@ export default {
         {key: 'code', label: 'Organisation Identifier', tdClass: 'w-25'},
         {key: 'name', label: 'Name', tdClass: 'w-75'}
       ],
-      identifiers: [],
-      codesAvailable: true,
-      country: {}
+      identifiers: []
     }
   },
   head() {
@@ -82,6 +80,16 @@ export default {
     }
   },
   computed: {
+    codesAvailable() {
+      return this.country_code in this.countriesObj
+    },
+    country() {
+      if (this.codesAvailable) {
+        return this.countriesObj[this.country_code]
+      } else {
+        return {name: this.allCountriesObj[this.country_code]}
+      }
+    },
     baseURL() {
       return this.$axios.defaults.baseURL
     },...mapState(['countries', 'countriesObj', 'allCountriesObj'])
@@ -98,25 +106,21 @@ export default {
             name: values[1]
           }
         })
-      }).finally(_ => {
+      }).catch(_ => { }).finally(_ => {
         this.busy = false
       })
-    },
-    initialise() {
-      if (this.country_code in this.countriesObj) {
-        this.codesAvailable = true
-        this.country = this.countriesObj[this.country_code]
-        this.loadIdentifiers()
-      } else {
-        this.codesAvailable = false
-        this.country = {name: this.allCountriesObj[this.country_code]}
-      }
     }
   },
   mounted() {
-    this.initialise()
   },
   watch: {
+    codesAvailable: {
+      handler(value) {
+        if (value === true) {
+          this.loadIdentifiers()
+        }
+      }
+    }
   }
 }
 </script>
