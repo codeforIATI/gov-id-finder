@@ -38,7 +38,7 @@ This would mean that the organisation identifier for the Ministry of Education i
 
 ## Implementation
 
-These new COA prefixes will soon be available on [org-id.guide](http://org-id.guide/). In the meantime, publishers can already begin to use these codes. The relevant codes can be found in the budget of each country. For convenience, we’ve pulled out the codes from over 50 budgets, including most of the world’s most heavily aid dependent countries. We’ve developed this site to provide easy access to these codes. The authoritative source remains the government's own budget document, or Chart of Accounts.
+These new `COA` prefixes are available on [org-id.guide](http://org-id.guide/) for every country, and so publishers can begin to use these codes to refer to government entities. The relevant codes can be found in the budget of each country. For convenience, we’ve pulled out the codes from over 50 budgets, including most of the world’s most heavily aid dependent countries. We’ve developed this site to provide easy access to these codes. The authoritative source remains the government's own budget document, or Chart of Accounts.
 
 ## Contact
 
