@@ -42,7 +42,7 @@
           <b-col md="6">
             <p>Using codes extracted from government budgets, <nuxt-link :to="{name: 'about'}">as described here</nuxt-link><span id="last-updated"></span>.</p>
 
-            <p><a href="/downloads/org-ids.csv">Download a CSV snapshot</a>, or <a href="/downloads/org-ids.json">a JSON snapshot</a>.</p>
+            <p><a href="https://codeforiati.org/gov-id-finder-data/downloads/org-ids.csv">Download a CSV snapshot</a>, or <a href="https://codeforiati.org/gov-id-finder-data/downloads/org-ids.json">a JSON snapshot</a>.</p>
           </b-col>
           <b-col md="6" class="text-md-right">
             <p>
