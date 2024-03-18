@@ -15,6 +15,7 @@
                 href="#" active :to="{name: 'about'}">Not listed? Get in touch!</b-dropdown-item>
               <b-dropdown-item
                 v-for="country in countries"
+                :key="country.code"
                 :to="{name: 'countries-id', params: { id: country.code }}">{{ country.name }}</b-dropdown-item>
             </div>
           </b-nav-item-dropdown>
