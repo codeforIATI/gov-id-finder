@@ -42,7 +42,7 @@ These new `COA` prefixes are available on [org-id.guide](http://org-id.guide/) f
 
 ## Contact
 
-For more information, or to add or update the codes for a particular country, please contact <a href="mailto:markb@devinit.org">Mark Brough</a> at Development Initiatives.
+For more information, or to add or update the codes for a particular country, please contact <a href="mailto:mark.brough@emergentally.com">Mark Brough</a> at Emergentally.
 </template>
 <style scoped>
 h3 {

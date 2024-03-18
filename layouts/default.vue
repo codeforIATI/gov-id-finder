@@ -46,7 +46,7 @@
           </b-col>
           <b-col md="6" class="text-md-right">
             <p>
-              A <a href="https://codeforiati.org">Code for IATI</a> project, supported by <a href="https://devinit.org">Develoment Initiatives</a>
+              A <a href="https://codeforiati.org">Code for IATI</a> project, initially funded by <a href="https://devinit.org">Develoment Initiatives</a>
             </p>
             <p>
               <a href="https://github.com/codeforIATI/gov-id-finder">Source code</a> /
