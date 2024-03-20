@@ -19,6 +19,7 @@
     "markdown-it-anchor": "^8.6.7",
     "nuxt": "^2.17.3",
     "vue": "^2.7.16",
+    "vue-scrollto": "^2.20.0",
     "vue-select": "^3.20.2",
     "vue-server-renderer": "^2.7.16",
     "vue-template-compiler": "^2.7.16",
