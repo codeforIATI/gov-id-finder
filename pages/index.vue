@@ -48,10 +48,23 @@
             <b-form-input readonly :value="`${selectedOrganisation.org_type} (${selectedOrganisation.org_type_code})`">
             </b-form-input>
           </b-input-group>
-          <b-btn
-            :href="selectedOrganisation.source_url"
-            variant="outline-secondary"
-            class="mt-2">Source: {{ selectedOrganisation.source_dataset }}</b-btn>
+          <b-row>
+            <b-col md="6">
+              <b-btn
+                :href="selectedOrganisation.source_url"
+                variant="outline-secondary"
+                class="mt-2">Source: {{ selectedOrganisation.source_dataset }}</b-btn>
+              </b-col>
+            <b-col md="6" class="text-md-right">
+              <b-btn
+                :to="{name: 'countries-id',
+                  params: { id: selectedOrganisation.country_code },
+                  hash: `#${selectedOrganisation.org_id}`
+                }"
+                variant="outline-secondary"
+                class="mt-2">View on codelist</b-btn>
+              </b-col>
+            </b-row>
         </b-col>
       </b-row>
       <b-row v-if="busy">
@@ -111,7 +124,7 @@ export default {
   data() {
     return {
       options: [],
-      placeholder: 'E.g. Ministry of Health and Social Welfare (Liberia)',
+      placeholder: 'E.g. Ministry of Health (Liberia)',
       selectedOrganisationID: null,
       selectedOrganisation: {},
       busy: false,
