@@ -3,34 +3,36 @@
     <b-navbar toggleable="sm" type="light" variant="light" sticky>
       <b-container>
         <b-navbar-brand :to="'/'">
-          <img src="~/assets/logo.png" alt="A project of Code for IATI"
-            width="100px" />
-          Gov Org ID Finder
+          Government Organisation ID Finder
         </b-navbar-brand>
-        <b-navbar-nav class="mr-auto">
-          <b-nav-item :to="{name: 'index'}" exact-active-class="active">Home</b-nav-item>
-          <b-nav-item-dropdown text="Countries" right>
-            <div class="scrollable-menu">
-              <b-dropdown-item
-                href="#" active :to="{name: 'about'}">Not listed? Get in touch!</b-dropdown-item>
-              <b-dropdown-item
-                v-for="country in countries"
-                :key="country.code"
-                :to="{name: 'countries-id', params: { id: country.code }}">{{ country.name }}</b-dropdown-item>
-            </div>
-          </b-nav-item-dropdown>
-          <b-nav-item :to="{name: 'about'}" exact-active-class="active">About</b-nav-item>
-        </b-navbar-nav>
-        <b-navbar-toggle
-          target="none"
-          data-c4i-toggle="sidebar"
-          type="button"
-          aria-controls="c4i-sidebar"
-          aria-expanded="false"
-          aria-label="Toggle Code for IATI sidebar"
-          class="c4i-navbar-toggler navbar-toggler">
-          <span class="navbar-toggler-icon"></span>
-        </b-navbar-toggle>
+        <b-navbar-toggle target="navbar-collapse"></b-navbar-toggle>
+        <b-collapse id="navbar-collapse" is-nav>
+          <b-navbar-nav class="mr-auto">
+            <b-nav-item :to="{name: 'index'}" exact-active-class="active">Home</b-nav-item>
+            <b-nav-item-dropdown text="Countries" right>
+              <div class="scrollable-menu">
+                <b-dropdown-item
+                  href="#" active :to="{name: 'about'}">Not listed? Get in touch!</b-dropdown-item>
+                <b-dropdown-item
+                  v-for="country in countries"
+                  :key="country.code"
+                  :to="{name: 'countries-id', params: { id: country.code }}">{{ country.name }}</b-dropdown-item>
+              </div>
+            </b-nav-item-dropdown>
+            <b-nav-item :to="{name: 'about'}" exact-active-class="active">About</b-nav-item>
+          </b-navbar-nav>
+          <b-navbar-toggle
+            target="none"
+            data-c4i-toggle="sidebar"
+            type="button"
+            aria-controls="c4i-sidebar"
+            aria-expanded="false"
+            aria-label="Toggle Code for IATI sidebar"
+            class="c4i-navbar-toggler navbar-toggler">
+            <span><img src="~/assets/logo.png" alt="A project of Code for IATI"
+            width="100px" /></span>
+          </b-navbar-toggle>
+        </b-collapse>
       </b-container>
     </b-navbar>
     <b-container class="d-flex flex-column h-100">
