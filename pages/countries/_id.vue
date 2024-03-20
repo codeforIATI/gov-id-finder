@@ -25,9 +25,21 @@
               </ul>
             </b-col>
           </b-row>
+          <b-row>
+            <b-col>
+              <b-form-input
+                class="mb-2"
+                id="filter-input"
+                v-model="filter"
+                type="search"
+                placeholder="Type to Search"
+              ></b-form-input>
+            </b-col>
+          </b-row>
           <b-table
             :fields="identifierFields"
             :items="identifiers"
+            :filter="filter"
             :busy="busy">
             <template v-slot:table-busy>
               <div class="text-center my-2">
@@ -66,9 +78,10 @@ export default {
   data() {
     return {
       busy: false,
+      filter: null,
       identifierFields: [
-        {key: 'code', label: 'Organisation Identifier', tdClass: 'w-25'},
-        {key: 'name', label: 'Name', tdClass: 'w-75'}
+        {key: 'code', label: 'Organisation Identifier', tdClass: 'w-25', sortable: true},
+        {key: 'name', label: 'Name', tdClass: 'w-75', sortable: true}
       ],
       identifiers: []
     }
