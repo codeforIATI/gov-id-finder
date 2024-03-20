@@ -62,7 +62,7 @@
                   hash: `#${selectedOrganisation.org_id}`
                 }"
                 variant="outline-secondary"
-                class="mt-2">View on codelist</b-btn>
+                class="mt-2">View on country page</b-btn>
               </b-col>
             </b-row>
         </b-col>
