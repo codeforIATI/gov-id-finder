@@ -52,6 +52,10 @@
                 <strong>Loading...</strong>
               </div>
             </template>
+            <template v-slot:cell(code)="data">
+              <a :id="data.item.code" style="visibility:hidden;padding-top:73px;"></a>
+              <router-link :to="'#' + data.item.code">{{ data.item.code }}</router-link>
+            </template>
           </b-table>
         </b-col>
       </b-row>
@@ -76,6 +80,7 @@ import axios from 'axios'
 import vSelect from 'vue-select'
 import 'vue-select/dist/vue-select.css';
 const csv = require('csv-to-js-parser').csvToObj
+import VueScrollTo from 'vue-scrollto'
 
 
 export default {
@@ -129,11 +134,28 @@ export default {
       }).catch(_ => { }).finally(_ => {
         this.busy = false
       })
-    }
+    },
+    handleScroll() {
+      var hash = this.$route.hash.split("#")[1]
+      if (this.$route.hash) {
+        if (this.totalRows > this.perPage) {
+          var codeIndex = this.codes.findIndex(code => code.code == hash)+1
+          var newPage = Math.ceil(codeIndex/parseFloat(this.perPage))
+          this.currentPage = newPage
+        }
+        setTimeout(() => {
+          var anchor = document.getElementById(hash)
+          VueScrollTo.scrollTo(anchor, 500)
+        }, 300)
+      }
+    },
   },
   mounted() {
   },
   watch: {
+    identifiers: {
+      handler: 'handleScroll'
+    },
     codesAvailable: {
       handler(value) {
         if (value === true) {
