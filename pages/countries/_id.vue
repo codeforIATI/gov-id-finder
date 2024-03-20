@@ -15,14 +15,19 @@
           </h1>
           <b-row>
             <b-col class="text-left lead mb-2">
-              <ul>
-                <li>Source year: {{ this.country.year }}</li>
-                <li>Source URL: <code><a :href="this.country.source">{{ this.country.source }}</a></code></li>
-                <li>Download data: <b-btn
-                  variant="primary"
-                  :href="`${baseURL}/source/${this.countryCode}.csv`"
-                  size="sm">CSV</b-btn></li>
-              </ul>
+              <small>
+                <dl class="row">
+                  <dt class="col-sm-3">Source year</dt>
+                  <dd class="col-sm-9">{{ this.country.year }}</dd>
+                  <dt class="col-sm-3">Source URL</dt>
+                  <dd class="col-sm-9"><pre class="mb-0"><a :href="this.country.source">{{ this.country.source }}</a></pre></dd>
+                  <dt class="col-sm-3">Download data</dt>
+                  <dd class="col-sm-9"><b-btn
+                    variant="primary"
+                    :href="`${baseURL}/source/${this.countryCode}.csv`"
+                    size="sm">CSV</b-btn></dd>
+                </dl>
+              </small>
             </b-col>
           </b-row>
           <b-row>
