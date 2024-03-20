@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/countries/ML", {data:[{}],fetch:{},mutations:[]});

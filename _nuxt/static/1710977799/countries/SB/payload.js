@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/countries/SB", {data:[{}],fetch:{},mutations:[]});
