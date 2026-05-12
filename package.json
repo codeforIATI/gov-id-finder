@@ -16,6 +16,7 @@
     "@bootstrap-vue-next/nuxt": "^0.45.3",
     "@nuxt/content": "^3.13.0",
     "@pinia/nuxt": "^0.11.3",
+    "better-sqlite3": "^12.10.0",
     "bootstrap": "^5.3.3",
     "bootstrap-vue-next": "^0.45.3",
     "csv-to-js-parser": "^2.3.4",
