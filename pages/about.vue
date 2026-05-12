@@ -66,10 +66,9 @@ Some bodies sit at the edge of what counts as "government" — state-owned enter
 
 ## What this methodology does and does not promise
 
-The aim is **a consistent place to put whatever authoritative fiscal information exists for a given body**, so that publishers working independently from the same government document produce the same identifier. The methodology does not, and cannot, promise:
+The aim is **a consistent place to put whatever authoritative fiscal information exists for a given body**, so that publishers working independently from the same government document produce the same identifier. The methodology does not, and cannot, promise that identifiers will never change (bodies are created, merged, split and renamed; codes occasionally move).
 
-- That identifiers will never change (bodies are created, merged, split and renamed; codes occasionally move).
-- That the same body will always be identifiable across translated or transliterated names.
+We can also not commit that the list on this site will always be complete or up to date. The authoritative source remains the original government document. Where you find codes are missing or not up to date, you can contribute them - see **Contact** below.
 
 These limitations are inherent in relying on real-world government documents rather than a curated central registry, and the decentralised approach is a deliberate trade-off: a 90% solution that stays current under its own steam is more useful than a 100% solution that depends on ongoing central maintenance.
 
@@ -79,9 +78,11 @@ These limitations are inherent in relying on real-world government documents rat
 
 The `COA` prefixes are available on [org-id.guide](http://org-id.guide/) for every country, and publishers can begin to use these codes to refer to government entities. The relevant codes can be found in the budget of each country, or in the other authoritative sources documented per country on this site. For convenience, we've pulled out codes from over 60 central-government budgets, including most of the world's most heavily aid dependent countries. We are considering how to add sub-national coverage. The authoritative source in all cases remains the government's own budget document, chart of accounts, or other listed fiscal document.
 
+---
+
 ## Contact
 
-For more information, or to add or update the codes for a particular country, please contact [Mark Brough](mailto:mark.brough@emergentally.com) at Emergentally.
+For more information, or to add or update the codes for a particular country, please contact [Mark Brough](mailto:mark.brough@emergentally.com) at Emergentally. You can also take a look at our runnable [Claude prompt](/claude) and submit codes for additional countries.
 
 ---
 

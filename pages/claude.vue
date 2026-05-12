@@ -224,7 +224,7 @@ hr {
 }
 pre {
   background-color: #eeeeee;
-  padding: 6px;
+  padding: 10px;
 }
 </style>
 <script>

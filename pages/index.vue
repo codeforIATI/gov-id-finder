@@ -68,13 +68,15 @@
           <b-btn variant="success" :href="`${baseURL}/downloads/org-ids.json`">JSON</b-btn>
         </b-col>
       </b-row>
+      <hr class="mt-4 mb-4" />
       <b-row>
-        <b-col class="text-center mt-4">
+        <b-col class="text-center">
           <b-alert show variant="success">
             <h3>Contribute codes</h3>
-            Is a country missing from Gov ID Finder? We would welcome codes for more countries! Take a look at our
-            runnable <nuxt-link to="/claude/">Claude script</nuxt-link> and submit codes for additional countries. The
-            authoritative source remains the government’s own budget or chart of accounts.
+            <p class="lead">Is a country missing from Gov Org ID Finder? We would welcome codes for more
+              countries! Take a look at the <nuxt-link to="/about/">about</nuxt-link> page. You could also take a look at
+              our runnable <nuxt-link to="/claude/">Claude prompt</nuxt-link>. Remember that the authoritative source
+              remains the government’s own budget or chart of accounts.</p>
           </b-alert>
         </b-col>
       </b-row>
