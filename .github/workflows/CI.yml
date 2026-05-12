@@ -9,7 +9,7 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Install javascript dependencies
       run: |
         npm install
@@ -18,7 +18,7 @@ jobs:
         npm run generate
     - name: Deploy
       if: github.ref == 'refs/heads/main'
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist
