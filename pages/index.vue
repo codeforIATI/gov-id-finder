@@ -73,7 +73,7 @@
         <b-col class="text-center">
           <b-alert show variant="success">
             <h3>Contribute codes</h3>
-            <p class="lead">Is a country missing from Gov Org ID Finder? We would welcome codes for more
+            <p class="lead">Is a country missing from Gov ID Finder? We would welcome codes for more
               countries! Take a look at the <nuxt-link to="/about/">about</nuxt-link> page. You could also take a look at
               our runnable <nuxt-link to="/claude/">Claude prompt</nuxt-link>. Remember that the authoritative source
               remains the government’s own budget or chart of accounts.</p>
