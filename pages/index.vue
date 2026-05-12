@@ -7,14 +7,8 @@
       <p class="lead text-center">Easily access codes for government entities in {{ numCountries }} countries.</p>
       <b-row>
         <b-col class="organisation-data text-center">
-          <v-select
-            class="mt-2 mb-2"
-            v-model="selectedOrganisationID"
-            :options="options"
-            :placeholder="placeholder"
-            :filter-by="filterOptions"
-            @search="fetchOptions"
-            ref="search_organisation_id">
+          <v-select class="mt-2 mb-2" v-model="selectedOrganisationID" :options="options" :placeholder="placeholder"
+            :filter-by="filterOptions" @search="fetchOptions" ref="search_organisation_id">
 
             <template #option="{ code, label }">
               <span class="organisation-option">
@@ -31,7 +25,7 @@
           </v-select>
         </b-col>
       </b-row>
-      <b-row v-if="Object.keys(selectedOrganisation).length>0">
+      <b-row v-if="Object.keys(selectedOrganisation).length > 0">
         <b-col class="organisation-data">
           <b-input-group prepend="Organisation ID:">
             <b-form-input readonly :value="selectedOrganisation.org_id" ref="organisation_id">
@@ -42,29 +36,23 @@
               </b-btn>
             </b-input-group-append>
           </b-input-group>
-          <b-input-group
-            prepend="Organisation Type:"
-            class="mt-2">
+          <b-input-group prepend="Organisation Type:" class="mt-2">
             <b-form-input readonly :value="`${selectedOrganisation.org_type} (${selectedOrganisation.org_type_code})`">
             </b-form-input>
           </b-input-group>
           <b-row>
             <b-col md="6">
-              <b-btn
-                :href="selectedOrganisation.source_url"
-                variant="outline-secondary"
-                class="mt-2">Source: {{ selectedOrganisation.source_dataset }}</b-btn>
-              </b-col>
+              <b-btn :href="selectedOrganisation.source_url" variant="outline-secondary" class="mt-2">Source: {{
+                selectedOrganisation.source_dataset }}</b-btn>
+            </b-col>
             <b-col md="6" class="text-md-right">
-              <b-btn
-                :to="{name: 'countries-id',
-                  params: { id: selectedOrganisation.country_code },
-                  hash: `#${selectedOrganisation.org_id}`
-                }"
-                variant="outline-secondary"
-                class="mt-2">View on country page</b-btn>
-              </b-col>
-            </b-row>
+              <b-btn :to="{
+                name: 'countries-id',
+                params: { id: selectedOrganisation.country_code },
+                hash: `#${selectedOrganisation.org_id}`
+              }" variant="outline-secondary" class="mt-2">View on country page</b-btn>
+            </b-col>
+          </b-row>
         </b-col>
       </b-row>
       <b-row v-if="busy">
@@ -80,6 +68,18 @@
           <b-btn variant="success" :href="`${baseURL}/downloads/org-ids.json`">JSON</b-btn>
         </b-col>
       </b-row>
+      <hr class="mt-4 mb-4" />
+      <b-row>
+        <b-col class="text-center">
+          <b-alert show variant="success">
+            <h3>Contribute codes</h3>
+            <p class="lead">Is a country missing from Gov Org ID Finder? We would welcome codes for more
+              countries! Take a look at the <nuxt-link to="/about/">about</nuxt-link> page. You could also take a look at
+              our runnable <nuxt-link to="/claude/">Claude prompt</nuxt-link>. Remember that the authoritative source
+              remains the government’s own budget or chart of accounts.</p>
+          </b-alert>
+        </b-col>
+      </b-row>
     </b-jumbotron>
   </div>
 </template>
@@ -90,23 +90,30 @@
   --vs-font-size: 1.2rem;
   --vs-search-input-placeholder-color: grey;
 }
+
 .organisation-data .organisation-option {
   display: flex;
 }
+
 .organisation-data .organisation-option-label {
   flex-basis: 100%;
   white-space: normal;
 }
+
 .organisation-data .organisation-option-code {
   white-space: nowrap;
   font-style: italic;
 }
-.organisation-data .input-group-text, .organisation-data input {
+
+.organisation-data .input-group-text,
+.organisation-data input {
   font-size: 1.2rem;
 }
-.organisation-data  .vs__selected-options {
+
+.organisation-data .vs__selected-options {
   flex-wrap: nowrap;
 }
+
 .organisation-data .vs__search::placeholder,
 .organisation-data .vs__dropdown-toggle,
 .organisation-data .vs__dropdown-menu {
@@ -148,7 +155,7 @@ export default {
     },
     numCountries() {
       return this.countries.length
-    },...mapState(['countries'])
+    }, ...mapState(['countries'])
   },
   components: {
     vSelect
@@ -162,11 +169,11 @@ export default {
         autoHideDelay: 5000,
       })
     },
-    filterOptions (option, label, search) {
+    filterOptions(option, label, search) {
       return ((option.label || '') + (option.code || '')
-        ).toLocaleLowerCase().indexOf(search.toLocaleLowerCase()) > -1
+      ).toLocaleLowerCase().indexOf(search.toLocaleLowerCase()) > -1
     },
-    fetchOptions (search, loading) {
+    fetchOptions(search, loading) {
       const lookup = search.substr(0, 3).toLowerCase()
       // If search text is not '', and the first three
       // characters are different from what was previously entered...
@@ -178,24 +185,25 @@ export default {
           loading(true)
           this.selectedOrganisationID = null
           axios.get(`${this.baseURL}/data/lookup/${lookup}.json`
-            ).then(options => {
-              this.options = options.data.map(item => {
-                return {label: item[0], code: item[1]} })
-            }).catch(error => {
-              this.options = []
-            }).then(_ => {
-              loading(false)
+          ).then(options => {
+            this.options = options.data.map(item => {
+              return { label: item[0], code: item[1] }
             })
+          }).catch(error => {
+            this.options = []
+          }).then(_ => {
+            loading(false)
+          })
         }
       }
     },
-    fetchOrganisation (organisationID) {
+    fetchOrganisation(organisationID) {
       this.busy = true
       axios.get(`${this.baseURL}/data/${organisationID}.json`
-        ).then(organisation => {
+      ).then(organisation => {
         this.selectedOrganisation = organisation.data
         this.selectedOrganisationID.label = Object.values(this.selectedOrganisation.name).join()
-        this.$router.push({name: 'index', hash: `#${organisationID}`})
+        this.$router.push({ name: 'index', hash: `#${organisationID}` })
       }).catch(error => {
         this.selectedOrganisationID = null
       }).then(_ => {
