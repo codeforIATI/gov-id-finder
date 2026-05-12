@@ -9,7 +9,7 @@ This section explains the methodology for establishing common identifiers for go
 
 ## Background
 
-Tracking, coordinating and promoting accountability of resource flows to government ministries, agencies and sub-national bodies requires a way to uniquely identify government entities. As of early 2022, there was no widely-used method to do so within IATI data.
+Tracking, coordinating and promoting accountability of resource flows to government ministries and agencies requires a way to uniquely identify government entities. As of early 2022, there was no widely-used method to do so within IATI data.
 
 Government Charts of Accounts (COA) are the most promising avenue to identify government entities. Working on "[getting aid on budget](https://aidonbudget.org/)" from 2010 to 2016, Publish What You Fund showed that it was both important and feasible to map aid flows to government administrative classifications, which are part of the Charts of Accounts. Subsequent [discussions](https://iaticonnect.org/group/standard-management-consultations-0/discussion/discussion-post-identifying-government) in the IATI Technical Advisory Group in 2017 reaffirmed the possibility of using these classifications to identify government entities.
 
