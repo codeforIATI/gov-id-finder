@@ -2,7 +2,7 @@
 <div>
 <h1>Claude Prompt</h1>
 <p>You can contribute new codes to Gov ID Finder by running the below prompt in Claude and then submitting codes for missing countries. Before you begin, please take a look in <a href="https://github.com/codeforIATI/gov-id-finder-data/issues">Issues</a> and <a href="https://github.com/codeforIATI/gov-id-finder-data/pulls">Pull Requests</a> to check that nobody is working on a country. Then make a new issue to tell everyone else that you are working on providing codes for a country (or countries, if you want to do multiple at the same time).</p>
-<p><b>Always check your results after running the prompt!</b> And remember: the authoritative source remains the government’s own budget or chart of accounts.</p>
+<p><b>Always check your results after running the prompt!</b> And remember: the authoritative source remains the government's own budget or chart of accounts.</p>
 <p>If you have any other questions or feedback, please get in touch: <a href="mailto:mark.brough@emergentally.com">mark.brough@emergentally.com</a></p>
 <hr />
 
@@ -214,10 +214,10 @@ above, following the methodology in steps 1-7.
 </template>
 <style scoped>
 h3 {
-       margin-top: 10px;
+  margin-top: 10px;
 }
 table {
-       width: 100%;
+  width: 100%;
 }
 hr {
   width: 100%;
@@ -227,23 +227,6 @@ pre {
   padding: 10px;
 }
 </style>
-<script>
-import config from '../nuxt.config'
-export default {
-  data() {
-    return {
-    }
-  },
-  head() {
-    return {
-      title: `About | ${config.head.title}`
-    }
-  },
-  computed: {
-  },
-  methods: {
-  },
-  mounted() {
-  }
-}
+<script setup lang="ts">
+useHead({ title: 'Claude Prompt | Government Organisation ID Finder' })
 </script>
