@@ -1,4 +1,12 @@
-<template lang="md">
+<template>
+<div>
+<h1>Claude Prompt</h1>
+<p>You can contribute new codes to Gov ID Finder by running the below prompt in Claude and then submitting codes for missing countries. Before you begin, please take a look in <a href="https://github.com/codeforIATI/gov-id-finder-data/issues">Issues</a> and <a href="https://github.com/codeforIATI/gov-id-finder-data/pulls">Pull Requests</a> to check that nobody is working on a country. Then make a new issue to tell everyone else that you are working on providing codes for a country (or countries, if you want to do multiple at the same time).</p>
+<p><b>Always check your results after running the prompt!</b> And remember: the authoritative source remains the government’s own budget or chart of accounts.</p>
+<p>If you have any other questions or feedback, please get in touch: <a href="mailto:mark.brough@emergentally.com">mark.brough@emergentally.com</a></p>
+<hr />
+
+<pre>
 # Central-Government COA Identifier Extraction — Reusable Prompt
 
 This is a prompt template for Claude. Fill in the **Inputs** section below and
@@ -104,6 +112,7 @@ Identifier,Code,Name (native language),Name (English),Branch / Sector
   (e.g. Poder Legislativo, Poder Judiciário, Ministry sector, Regulatory body)
 
 **`{XX}-COA-meta.csv`** — the metadata file:
+
 ```
 key,value
 title,{Country} central-government organisation identifiers
@@ -199,6 +208,9 @@ extracting from a full budget law.
 
 Now extract the codes for the country specified in the **Inputs** section
 above, following the methodology in steps 1-7.
+
+</pre>
+</div>
 </template>
 <style scoped>
 h3 {
@@ -209,6 +221,10 @@ table {
 }
 hr {
   width: 100%;
+}
+pre {
+  background-color: #eeeeee;
+  padding: 6px;
 }
 </style>
 <script>

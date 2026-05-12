@@ -3,6 +3,8 @@
 
 This section explains the methodology for establishing common identifiers for government entities, and why we developed this site.
 
+**NEW:** We also have a [Claude prompt](/claude) you can run to identify contribute codes. The authoritative source remains the government’s own budget or chart of accounts.
+
 ---
 
 ## Background
