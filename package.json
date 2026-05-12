@@ -3,26 +3,24 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt dev",
     "build": "nuxt build",
-    "start": "nuxt start",
     "generate": "nuxt generate",
+    "preview": "nuxt preview",
     "generate-subfolder": "DEPLOY_ENV=WITH_SUBFOLDER nuxt generate"
   },
+  "devDependencies": {
+    "@types/node": "^22.0.0"
+  },
   "dependencies": {
-    "@nuxtjs/axios": "^5.13.6",
-    "@nuxtjs/markdownit": "^2.0.0",
-    "bootstrap": "^4.6.2",
-    "bootstrap-vue": "^2.23.1",
-    "core-js": "^3.19.3",
+    "@bootstrap-vue-next/nuxt": "^0.45.3",
+    "@nuxt/content": "^3.13.0",
+    "@pinia/nuxt": "^0.11.3",
+    "bootstrap": "^5.3.3",
+    "bootstrap-vue-next": "^0.45.3",
     "csv-to-js-parser": "^2.3.4",
-    "markdown-it-anchor": "^8.6.7",
-    "nuxt": "^2.17.3",
-    "vue": "^2.7.16",
-    "vue-scrollto": "^2.20.0",
-    "vue-select": "^3.20.2",
-    "vue-server-renderer": "^2.7.16",
-    "vue-template-compiler": "^2.7.16",
-    "webpack": "^4.47.0"
+    "nuxt": "^4.4.5",
+    "pinia": "^3.0.4",
+    "vue-select": "4.0.0-beta.6"
   }
 }

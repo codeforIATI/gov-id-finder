@@ -1,9 +1,8 @@
-<template lang="md">
 # About
 
 This section explains the methodology for establishing common identifiers for government entities, and why we developed this site.
 
-**NEW:** We also have a [Claude prompt](/claude) you can run to identify contribute codes. The authoritative source remains the government’s own budget or chart of accounts.
+**NEW:** We also have a [Claude prompt](/claude) you can run to identify contribute codes. The authoritative source remains the government's own budget or chart of accounts.
 
 ---
 
@@ -21,7 +20,7 @@ Using administrative classifications to generate unique identifiers for governme
 
 The methodology is simple. For each country, the organisation identifier for a central government body consists of:
 
-{`ISO 3166-1 country code`}-COA-{`Organisation code from the relevant country's chart of accounts administrative classification`}
+`ISO 3166-1 country code`-COA-`Organisation code from the relevant country's chart of accounts administrative classification`
 
 For example, in Liberia (LR), the following codes are used for government entities:
 
@@ -58,12 +57,6 @@ Some bodies sit at the edge of what counts as "government" — state-owned enter
 - If the body has a code in the budget's administrative classification, use it under the `-COA-` scheme.
 - Otherwise, fall back to the [organisation identifier rules](https://iatistandard.org/en/iati-standard/203/organisation-identifiers/) in the IATI standard, which may direct the publisher to a company registry, an IATI-maintained codelist, or another recognised registration agency.
 
-### Levels of disaggregation
-
-`-COA-` identifiers may refer to a body at any level for which an authoritative code exists. Where a publisher has information about a sub-unit, they may use a second `-` delimiter to indicate it, following the [IATI standard convention](https://iatistandard.org/en/iati-standard/203/organisation-identifiers/) for sub-units. Where an internal code contains a `-`, it should be replaced with an `_`.
-
----
-
 ## What this methodology does and does not promise
 
 The aim is **a consistent place to put whatever authoritative fiscal information exists for a given body**, so that publishers working independently from the same government document produce the same identifier. The methodology does not, and cannot, promise that identifiers will never change (bodies are created, merged, split and renamed; codes occasionally move).
@@ -83,49 +76,3 @@ The `COA` prefixes are available on [org-id.guide](http://org-id.guide/) for eve
 ## Contact
 
 For more information, or to add or update the codes for a particular country, please contact [Mark Brough](mailto:mark.brough@emergentally.com) at Emergentally. You can also take a look at our runnable [Claude prompt](/claude) and submit codes for additional countries.
-
----
-
-Using codes extracted from government budgets, [as described here](https://gov-id-finder.codeforiati.org/about).
-
-[Download a CSV snapshot](https://codeforiati.org/gov-id-finder-data/downloads/org-ids.csv), or [a JSON snapshot](https://codeforiati.org/gov-id-finder-data/downloads/org-ids.json).
-
-A [Code for IATI](https://codeforiati.org) project, initially funded by [Development Initiatives](https://devinit.org).
-
-[Source code](https://github.com/codeforIATI/gov-id-finder) / [Report a bug](https://github.com/codeforIATI/gov-id-finder/issues/new/choose)
-
-Based on [Org ID Finder](https://org-id-finder.codeforiati.org) by [Andy Lulham](https://twitter.com/andylolz).
-</template>
-<style scoped>
-h3 {
-  margin-top: 10px;
-}
-
-table {
-  width: 100%;
-}
-
-hr {
-  width: 100%;
-}
-</style>
-<script>
-import config from '../nuxt.config'
-export default {
-  data() {
-    return {
-    }
-  },
-  head() {
-    return {
-      title: `About | ${config.head.title}`
-    }
-  },
-  computed: {
-  },
-  methods: {
-  },
-  mounted() {
-  }
-}
-</script>

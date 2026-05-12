@@ -70,6 +70,10 @@ typings/
 
 # nuxt.js build output
 .nuxt
+.output
+
+# nuxt content sqlite cache
+.data
 
 # Nuxt generate
 dist
