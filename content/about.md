@@ -57,12 +57,6 @@ Some bodies sit at the edge of what counts as "government" — state-owned enter
 - If the body has a code in the budget's administrative classification, use it under the `-COA-` scheme.
 - Otherwise, fall back to the [organisation identifier rules](https://iatistandard.org/en/iati-standard/203/organisation-identifiers/) in the IATI standard, which may direct the publisher to a company registry, an IATI-maintained codelist, or another recognised registration agency.
 
-### Levels of disaggregation
-
-`-COA-` identifiers may refer to a body at any level for which an authoritative code exists. Where a publisher has information about a sub-unit, they may use a second `-` delimiter to indicate it, following the [IATI standard convention](https://iatistandard.org/en/iati-standard/203/organisation-identifiers/) for sub-units. Where an internal code contains a `-`, it should be replaced with an `_`.
-
----
-
 ## What this methodology does and does not promise
 
 The aim is **a consistent place to put whatever authoritative fiscal information exists for a given body**, so that publishers working independently from the same government document produce the same identifier. The methodology does not, and cannot, promise that identifiers will never change (bodies are created, merged, split and renamed; codes occasionally move).
